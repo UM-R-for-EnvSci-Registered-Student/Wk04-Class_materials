@@ -20,6 +20,7 @@ mock_df <- data.frame(sample_id = seq(from = 900, to = 999, by = 1),            
 mock_df
 
 head(mock_df)
+tail(mock_df)
 
 
 # save the data ----------------------------------------------------------
@@ -31,7 +32,7 @@ write.csv(mock_df, "data/example_data_set_a.csv",  # Relative path starting at o
 
 write.table(mock_df, file = "data/example_data_set_b.txt", sep = "\t")  
 
-# write.table doesn't automatically create a row.names column, 
+# write.table does automatically create a row.names column, 
 # in fact, it messes up the column names if you ask it to avoid it
 # very not intuitive!
 

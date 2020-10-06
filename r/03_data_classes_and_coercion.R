@@ -7,7 +7,7 @@
 ## CAREFUL!!! do it at your own risk!
 
 # Ctrl + Shift + Fn + F10  (PC / Linux)
-# Command + Shift + Fn+ F10 (Mac OS)
+# Command + Shift + Fn + F10 (Mac OS)
 
 
 # Data classes do not mix ------------------------------------------------

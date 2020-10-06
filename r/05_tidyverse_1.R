@@ -60,14 +60,15 @@ clean_names(ditch_data_original)
 
 # Let's practice with the pipe
 
-ditch_data_original %>%  clean_names()
+ditch_data_original %>% 
+  clean_names()
 
 
 # very useful when you want to add many functions
 
 
 ditch_data <- ditch_data_original %>% 
-  clean_names() %>% 
+  clean_names() %>%
   rename(ph = p_h)
 
 
@@ -98,12 +99,12 @@ glimpse(weather_data)
 
 # you can create a subset of columns
 
-ditch_data %>% 
-  select(site, year, month, depth, ph, conductivity)
+subset <- ditch_data %>% 
+  dplyr::select(site, year, month, depth, ph, conductivity)
 
 # you can get rid of one or several columns
 
-ditch_data %>% 
+everything_minus_depth <- ditch_data %>% 
   select(-depth)
 
 # you can reorder columns
@@ -126,7 +127,8 @@ ditch_data %>%
 # filter data (rows)
 
 ditch_data %>% 
-  filter(year == 2001)
+  # filter(year == 2001) %>%
+  filter(site != 1)
 
 
 
@@ -174,7 +176,16 @@ ditch_data
 ditch_data_long <- ditch_data %>% 
   pivot_longer(cols = c(-site, -month, -year, -depth, -watershed), 
                names_to = "parameter", 
-               values_to = "measure", )
+               values_to = "measure")
 
+
+summary_table <- ditch_data_long %>%
+  group_by(parameter, year) %>% 
+  summarise(mean_value = mean(measure, na.rm = TRUE))
+
+
+  
+  
+  
 
 
